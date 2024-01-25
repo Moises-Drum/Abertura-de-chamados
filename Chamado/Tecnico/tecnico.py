@@ -1,25 +1,25 @@
 import socket, json
 
-host = "127.0.1.1" # Deve ter o mesmo IP do servidor.
+host = socket.gethostbyname(socket.gethostname()) # Deve ter o mesmo IP do servidor.
 port = 55555
 
 
 def main():
 
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tecnico = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     try:
-        client.connect((host, port))
+        tecnico.connect((host, port))
     except:                                                        #Partes da comunicação entre o servidor
         return print('\nNão foi possívvel se conectar ao servidor!\n')
 
-    print('Bem vindo ao projeto ...')
+    print('Bem vindo ao projeto de Abertura de Chamados')
     print('Este é um ambiente para técnicos.\n')
 
     print('Chamados abertos: \n')
 
     while True:
-        msg = client.recv(2048).decode()        #Partes da comunicação entre o servidor
+        msg = tecnico.recv(2048).decode()        #Partes da comunicação entre o servidor
         msg = eval(msg)
 
         with open("bancodados.json", "w") as dAtua:

@@ -4,7 +4,7 @@ import socket
 host = socket.gethostbyname(socket.gethostname())
 port = 55555
 
-clients = []                                                    #Esse é o servidor :3
+clients = []
 
 def main():
 
